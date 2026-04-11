@@ -78,7 +78,8 @@ jobs:
         if: ${{ contains(needs.get-changes.outputs.files, matrix.path_prefix) }}
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ${{ matrix.context }}
+          file: ${{ matrix.dockerfile }}
           push: true
           platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}
