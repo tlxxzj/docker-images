@@ -42,7 +42,7 @@ jobs:
       - name: Exit early if no changes
         if: ${{ !contains(needs.get-changes.outputs.files, matrix.path_prefix) }}
         run: |
-          echo "No changes in ${matrix.path_prefix}, skipping build and push."
+          echo "No changes in ${{matrix.path_prefix}}, skipping build and push."
           exit 1
 
       - name: Checkout Repository
