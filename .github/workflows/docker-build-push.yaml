@@ -21,7 +21,9 @@ jobs:
         id: get-changes
         run: |
           CHANGES=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }})
-          echo "files=$CHANGES" >> $GITHUB_OUTPUT
+          echo "files<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
   
   build-and-push:
     needs: get-changes
