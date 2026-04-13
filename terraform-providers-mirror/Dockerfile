@@ -43,6 +43,8 @@ COPY . .
 
 RUN terraform providers mirror -platform=linux_amd64 /app/terraform-providers-mirror
 
+RUN ls -alhR /app/terraform-providers-mirror
+
 
 FROM alpine:3.23
 
